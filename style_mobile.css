@@ -8,9 +8,7 @@
  HOW TO USE:
  1. Make a new site skin with the Garden Bloom code (style_desktop.css) and
     select "all" in the Media section. Save skin.
- 2. Make another new site skin with the code below, selecting
-    "only screen and (max-width: 62em)" in the Media section, and then
-    also choosing Garden Bloom as the parent skin. Save and activate.
+ 2. Make another new site skin with the code below, selecting "handheld", "only screen and (max-width: 42em)"and "only screen and (max-width: 62em)" in the Media section, and then choose Garden Bloom as the parent skin. Save and activate.
 
  ============================================
  * FONT SIZING STRATEGY:
@@ -159,9 +157,9 @@
   .system h2.title,
   .system h2.title.heading,
   .system h3.title {
+    -webkit-text-fill-color: #2a2825 !important;
     color: #2a2825 !important;
     font-style: normal !important;
-    -webkit-text-fill-color: #2a2825 !important;
   }
 
   /* News post meta — strip card styling */
@@ -256,12 +254,8 @@
 
   /* Push fandom tags below the required-tags icon grid */
   li.work.blurb .header.module h4.heading, li.bookmark.blurb .header.module h4.heading, li.series.blurb .header.module h4.heading {
+    margin-bottom: 3em;
     margin-left: 66px !important;
-    margin-bottom: 4em;
-  }
-  /* Margin between fandom tag rows */
-  .fandoms a, .fandoms a:visited, h5.fandoms.heading a, h5.fandoms.heading a:visited, dl.meta dd.fandom a, #main.fandoms-index ul.tags.index.group li a.tag, #main.fandoms-index ul.tags.index.group li a.tag:visited, #main.media-index ol.index.group li a.tag, #main.media-index ol.index.group li a.tag:visited {
-    margin-bottom: 0.5em !important;
   }
 
   /* ── Work page ───────────────────────────── */
