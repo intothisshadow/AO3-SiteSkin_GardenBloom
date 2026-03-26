@@ -12,20 +12,25 @@
 
  ============================================
  * FONT SIZING STRATEGY:
- *   Each breakpoint sets a single body font-size.
- *   All elements use em ratios off that base,
- *   so the whole page scales together consistently.
- *
- *   Desktop base:  20px
- *   ≤ 62em:        16px  (0.80x)
- *   ≤ 42em:        14px  (0.70x)
- *   ≤ 30em:        12px  (0.60x)
+ *   Each breakpoint sets a single html font-size via CSS variables.
+ *   rem units are relative to html, so everything scales together
+ *   when you change the USER SETTINGS below.
  *
  * BREAKPOINTS (matching AO3's own media CSS):
  *   max-width: 62em  — tablet / landscape phone
  *   max-width: 42em  — portrait phone
  *   max-width: 30em  — very small phones
  * ============================================ */
+
+:root {
+  /* 🟢 USER SETTINGS: CHANGE THESE NUMBERS TO RESIZE EVERYTHING 🟢 */
+  --desktop-base: 20px;   /* Note: set this in style_desktop.css, not here */
+  --tablet-base:  16px;   /* Original was 16px */
+  --mobile-base:  14px;   /* Original was 14px */
+  --tiny-base:    12px;   /* Original was 12px */
+  /* ------------------------------------------------------------ */
+}
+
 
 
 /* ============================================
@@ -80,8 +85,26 @@
   #greeting,
   #greeting a,
   #greeting a:visited {
-    font-size: 0.8em !important;
+    font-size: 0.8rem !important;
     font-weight: normal !important;
+  }
+
+  /* Greeting dropdown menu */
+  #greeting .dropdown,
+  #greeting ul.dropdown,
+  #greeting .menu,
+  #greeting ul.primary.navigation li ul,
+  #greeting .expandable li ul {
+    font-size: 0.8rem !important;
+  }
+
+  #greeting .dropdown a,
+  #greeting .dropdown a:visited,
+  #greeting ul.dropdown a,
+  #greeting ul.dropdown a:visited {
+    font-size: 0.8rem !important;
+    padding: 0.3em 0.6em !important;
+    white-space: normal !important;
   }
 
   #greeting .icon,
@@ -180,7 +203,7 @@
   button,
   .current,
   .actions label {
-    font-size: 0.8em !important;
+    font-size: 0.8rem !important;
     padding: 0.15em 0.5em !important;
   }
 
@@ -213,6 +236,7 @@
   li.work.blurb .header.module h4.heading,
   li.bookmark.blurb .header.module h4.heading,
   li.series.blurb .header.module h4.heading {
+    font-size: 1rem !important;
     margin-left: 66px !important;
     margin-top: 0 !important;
     padding-right: 0 !important;
@@ -226,6 +250,7 @@
   li.bookmark.blurb .header.module .byline,
   li.series.blurb .header.module .byline {
     clear: both !important;
+    font-size: 0.9rem !important;
     margin-left: 0 !important;
     margin-top: 0 !important;
     padding-right: 0 !important;
@@ -248,6 +273,7 @@
 
   .fandoms a.tag,
   h5.fandoms.heading a {
+    font-size: 0.75rem !important;
     max-width: 80vw !important;
     padding: 1px 7px !important;
   }
@@ -440,8 +466,8 @@
 
   /* ── Body base ───────────────────────────── */
 
-  body {
-    font-size: 16px !important;
+  html {
+    font-size: var(--tablet-base) !important;
   }
 
   /* ── Header ──────────────────────────────── */
@@ -460,7 +486,7 @@
 
   #header .primary.navigation a,
   #header .primary.navigation a:visited {
-    font-size: 0.85em !important;
+    font-size: 0.85rem !important;
     padding: 0.15em 0.35em !important;
     white-space: normal !important;
   }
@@ -484,8 +510,8 @@
 
   /* ── Body base ───────────────────────────── */
 
-  body {
-    font-size: 14px !important;
+  html {
+    font-size: var(--mobile-base) !important;
   }
 
   /* ── Main content ────────────────────────── */
@@ -510,7 +536,7 @@
   }
 
   #dashboard a {
-    font-size: 0.7em !important;
+    font-size: 0.7rem !important;
     padding: 4px 8px !important;
   }
 
@@ -525,7 +551,7 @@
   li.work.blurb p.datetime,
   li.bookmark.blurb p.datetime,
   li.series.blurb p.datetime {
-    font-size: 0.7em !important;
+    font-size: 0.7rem !important;
   }
 
   li.work.blurb .content,
@@ -549,6 +575,7 @@
 
   blockquote.userstuff.summary,
   .blurb blockquote.userstuff.summary {
+    font-size: 0.85rem !important;
     margin: 0.4em 8px !important;
     padding: 0.4em 0.6em !important;
   }
@@ -556,14 +583,14 @@
   li.work.blurb dl.stats,
   li.bookmark.blurb dl.stats,
   li.series.blurb dl.stats {
-    font-size: 0.78em !important;
+    font-size: 0.75rem !important;
   }
 
   .tags a,
   .tags a:visited,
   ul.tags a,
   dl.meta a.tag {
-    font-size: 0.76em !important;
+    font-size: 0.75rem !important;
     margin: 3px 1px !important;
     padding: 3px 8px !important;
   }
@@ -571,6 +598,7 @@
   /* ── Work page ───────────────────────────── */
 
   .userstuff {
+    font-size: 1.03rem !important;
     max-width: 100% !important;
     padding: 1em 0.75em !important;
   }
@@ -629,14 +657,14 @@
   .notice, p.notice, div.notice,
   .caution, p.caution,
   .error, p.error, div.error, ul.errors {
-    font-size: 0.85em !important;
+    font-size: 0.85rem !important;
     padding: 0.5em 0.7em !important;
   }
 
   /* ── Footer ──────────────────────────────── */
 
   body #footer {
-    font-size: 0.8em !important;
+    font-size: 0.8rem !important;
   }
 
 }
@@ -650,8 +678,8 @@
 
   /* ── Body base ───────────────────────────── */
 
-  body {
-    font-size: 12px !important;
+  html {
+    font-size: var(--tiny-base) !important;
   }
 
   /* ── Work blurb cards ────────────────────── */
@@ -685,6 +713,7 @@
   /* ── Work page ───────────────────────────── */
 
   .userstuff {
+    font-size: 1.03rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     max-width: 100% !important;

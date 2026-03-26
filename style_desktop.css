@@ -157,7 +157,8 @@
   --clr-summary-bg:     #fff8f2; /* Summary/notes ivory background */
   --clr-gold-stat:     #c8860a; /* Golden amber — stats numbers */
   --clr-rating-red:     #c0282c; /* Rating tag red */
-
+  /* --- Font size --- */
+  --desktop-base: 20px;  /* 🟢 USER SETTING: change this to resize all text */
 }
 
 
@@ -166,11 +167,14 @@
    ============================================ */
 
 /* fixed keeps the gradient from scrolling, so the same background persists at any scroll depth */
+html {
+  font-size: var(--desktop-base) !important;
+}
+
 body {
   background: linear-gradient(160deg, var(--clr-bg) 0%, var(--clr-cream) 50%, var(--clr-card-nested) 100%) fixed !important;
   background-color: var(--clr-bg) !important; /* fallback if gradient fails */
   color: var(--clr-indigo) !important;
-  font-size: 20px !important;
   overflow-x: hidden !important;
   text-align: left !important;
 }
