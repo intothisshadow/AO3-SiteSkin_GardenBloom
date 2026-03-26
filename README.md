@@ -12,7 +12,7 @@ In order to create a site skin, you need to have an AO3 account and you need to 
 
 **1. Copy the Code**
 
-Head over to the GitHub repository and copy the provided code from **style_desktop.css**. You can easily do this by clicking the Copy button located at the top of the code block.
+Head over to [the GitHub repository](https://github.com/intothisshadow/AO3-SiteSkin_GardenBloom) and copy the provided code from **style_desktop.css**. You can easily do this by clicking the Copy button located at the top of the code block.
 
 **2. Navigate to Your Skins**  
 · Log into your AO3 account.  
