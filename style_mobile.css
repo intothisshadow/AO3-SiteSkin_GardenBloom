@@ -1,50 +1,62 @@
 /*
- Theme Name: Garden Bloom, Mobile Skin Add-On - AO3 Site Skin
- Author: intothisshadow
- Author URI: https://www.so-obsessed.com
-
- ============================================
-
- HOW TO USE:
- 1. Make a new site skin with the Garden Bloom code (style_desktop.css) and
-    select "all" in the Media section. Save skin.
- 2. Make another new site skin with the code below, selecting "handheld", "only screen and (max-width: 42em)"and "only screen and (max-width: 62em)" in the Media section, and then choose Garden Bloom as the parent skin. Save and activate.
-
- ============================================
+ * Theme Name: Garden Bloom, Mobile Skin Add-On - AO3 Site Skin
+ * Author: intothisshadow
+ * Author URI: https://www.so-obsessed.com
+ * Last Updated: 2026-Apr-14 19:34 GMT
+ * ============================================
+ *
+ * HOW TO USE:
+ * 1. Make a new site skin with the Garden Bloom code (style_desktop.css) and
+ * select "all" in the Media section. Save skin.
+ * 2. Make another new site skin with the code below, selecting "handheld", "only screen and (max-width: 42em)"and "only screen and (max-width: 62em)" in the Media section, and then choose Garden Bloom as the parent skin. Save and activate.
+ *
+ * ============================================
  * FONT SIZING STRATEGY:
- *   Each breakpoint sets a single html font-size via CSS variables.
- *   rem units are relative to html, so everything scales together
- *   when you change the USER SETTINGS below.
+ * Each breakpoint sets a single html font-size via CSS variables.
+ * rem units are relative to html, so everything scales together
+ * when you change the USER SETTINGS below.
  *
  * BREAKPOINTS (matching AO3's own media CSS):
- *   max-width: 62em  — tablet / landscape phone
- *   max-width: 42em  — portrait phone
- *   max-width: 30em  — very small phones
- * ============================================ */
+ * max-width: 62em  — tablet / landscape phone
+ * max-width: 42em  — portrait phone
+ * max-width: 30em  — very small phones
+ * ============================================
+ */
 
-:root {
+:root
+{
   /* 🟢 USER SETTINGS: CHANGE THESE NUMBERS TO RESIZE EVERYTHING 🟢 */
-  --desktop-base: 20px;   /* Note: set this in style_desktop.css, not here */
-  --tablet-base:  16px;   /* Original was 16px */
-  --mobile-base:  14px;   /* Original was 14px */
-  --tiny-base:    12px;   /* Original was 12px */
+  --desktop-base: 20px;
+  /* Note: set this in style_desktop.css, not here */
+  --tablet-base: 16px;
+  /* Original was 16px */
+  --mobile-base: 14px;
+  /* Original was 14px */
+  --tiny-base: 12px;
+  /* Original was 12px */
   /* ------------------------------------------------------------ */
 }
 
-/* ============================================
-   SHARED — applies at all mobile widths (≤ 62em)
-   ============================================ */
+/*
+ * ============================================
+ * SHARED — applies at all mobile widths (≤ 62em)
+ * ============================================
+ */
 
-@media only screen and (max-width: 62em) {
+@media only screen and (max-width: 62em)
+{
 
   /* ── Layout reset ────────────────────────── */
 
-  html, body {
+  html,
+  body
+  {
     background-color: #faf9f7 !important;
     overflow-x: hidden !important;
   }
 
-  #outer {
+  #outer
+  {
     background: linear-gradient(160deg, #faf9f7 0%, #fdfcfa 50%, #fdfcfb 100%) !important;
     box-sizing: border-box !important;
     min-height: 100vh !important;
@@ -52,19 +64,25 @@
     width: 100% !important;
   }
 
-  #inner {
+  #inner
+  {
     box-sizing: border-box !important;
     min-width: 0 !important;
     width: 100% !important;
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after
+  {
     box-sizing: border-box !important;
   }
 
   /* ── Main content ────────────────────────── */
 
-  #main, #main.dashboard {
+  #main,
+  #main.dashboard
+  {
     margin-left: 0 !important;
     width: 100% !important;
   }
@@ -74,7 +92,8 @@
   /* Hide search — use Search nav link instead */
   #header form[action="/search"],
   #header .search form,
-  #header form.search {
+  #header form.search
+  {
     display: none !important;
   }
 
@@ -82,7 +101,8 @@
 
   #greeting,
   #greeting a,
-  #greeting a:visited {
+  #greeting a:visited
+  {
     font-size: 0.8rem !important;
     font-weight: normal !important;
   }
@@ -92,21 +112,24 @@
   #greeting ul.dropdown,
   #greeting .menu,
   #greeting ul.primary.navigation li ul,
-  #greeting .expandable li ul {
+  #greeting .expandable li ul
+  {
     font-size: 0.8rem !important;
   }
 
   #greeting .dropdown a,
   #greeting .dropdown a:visited,
   #greeting ul.dropdown a,
-  #greeting ul.dropdown a:visited {
+  #greeting ul.dropdown a:visited
+  {
     font-size: 0.8rem !important;
     padding: 0.3em 0.6em !important;
     white-space: normal !important;
   }
 
   #greeting .icon,
-  #greeting .user .icon {
+  #greeting .user .icon
+  {
     display: none !important;
   }
 
@@ -114,62 +137,74 @@
 
   /* Override AO3's 25-media-midsize.css dark red border with our dashed sage */
   #dashboard,
-  #dashboard.own {
-    border: 2px dashed rgba(89,172,119,0.40) !important;
+  #dashboard.own
+  {
+    border: 2px dashed rgba(89, 172, 119, 0.40) !important;
     border-radius: 14px !important;
     margin-bottom: 0.5em !important;
   }
 
-  /* AO3 narrow gives .dashboard .landmark clear:both — removed from global
-     rule to fix inbox pagination bug; re-add here scoped to #dashboard only */
-  #dashboard .landmark {
+  /*
+ * AO3 narrow gives .dashboard .landmark clear:both — removed from global
+ * rule to fix inbox pagination bug; re-add here scoped to #dashboard only
+ */
+  #dashboard .landmark
+  {
     clear: both !important;
   }
 
   /* Override AO3's grey secondary panel */
-  #dashboard .secondary {
+  #dashboard .secondary
+  {
     background: #fdfcfa !important;
     box-shadow: none !important;
   }
 
-  #dashboard .secondary a {
+  #dashboard .secondary a
+  {
     color: #4a7a57 !important;
   }
 
   /* News sidebar links — strip desktop dashed border from individual links */
   #dashboard a,
-  #dashboard span {
+  #dashboard span
+  {
     border: none !important;
     border-radius: 0 !important;
   }
 
   /* ── Profile page ────────────────────────── */
 
-  .user .primary {
+  .user .primary
+  {
     float: none !important;
     margin: 0 !important;
     width: 100% !important;
   }
 
   /* AO3's narrow CSS re-floats p.icon; padding-top pushes nav below icon */
-  .user.home .primary.header.module ul.navigation.actions {
+  .user.home .primary.header.module ul.navigation.actions
+  {
     padding-top: 7em !important;
   }
 
-  .home .header ul.actions {
+  .home .header ul.actions
+  {
     padding-top: 0.7em !important;
   }
 
   /* ── Kudos icon ──────────────────────────── */
 
   /* Hide the large desktop kudos heart — too big on mobile */
-  div:has(> p.kudos)::before {
+  div:has(> p.kudos)::before
+  {
     display: none !important;
   }
 
   /* ── News / admin page ───────────────────── */
 
-  .admin .primary .icon {
+  .admin .primary .icon
+  {
     height: 50px !important;
     width: 50px !important;
   }
@@ -177,7 +212,8 @@
   /* News post title — keep dark, not amber italic */
   .system h2.title,
   .system h2.title.heading,
-  .system h3.title {
+  .system h3.title
+  {
     -webkit-text-fill-color: #2a2825 !important;
     color: #2a2825 !important;
     font-style: normal !important;
@@ -185,7 +221,8 @@
 
   /* News post meta — strip card styling */
   .system dl.meta,
-  .system .wrapper dl.meta {
+  .system .wrapper dl.meta
+  {
     background: none !important;
     border: none !important;
     box-shadow: none !important;
@@ -193,14 +230,17 @@
 
   /* ── Buttons & actions ───────────────────── */
 
-  .actions a, .actions a:link,
-  .action, .action:link,
+  .actions a,
+  .actions a:link,
+  .action,
+  .action:link,
   .actions button,
   .actions input,
   input[type="submit"],
   button,
   .current,
-  .actions label {
+  .actions label
+  {
     font-size: 0.8rem !important;
     padding: 0.15em 0.5em !important;
   }
@@ -211,21 +251,24 @@
   li.bookmark.blurb.group,
   li.series.blurb.group,
   li.collection.blurb.group,
-  li.skins.own.picture.blurb.group {
+  li.skins.own.picture.blurb.group
+  {
     border-radius: 6px !important;
     padding: 0.6em 0.75em !important;
   }
 
   /* Tags li — collapse wrapper so pills flow directly in parent context */
   ul.tags li,
-  .tags li {
+  .tags li
+  {
     display: contents !important;
   }
 
   /* Blurb header: position:relative so datetime can be absolute */
   li.work.blurb .header.module,
   li.bookmark.blurb .header.module,
-  li.series.blurb .header.module {
+  li.series.blurb .header.module
+  {
     min-height: 2em !important;
     position: relative !important;
   }
@@ -233,7 +276,8 @@
   /* Title — margin-left to sit beside the icon column, no extra top space */
   li.work.blurb .header.module h4.heading,
   li.bookmark.blurb .header.module h4.heading,
-  li.series.blurb .header.module h4.heading {
+  li.series.blurb .header.module h4.heading
+  {
     font-size: 1rem !important;
     margin-left: 66px !important;
     margin-top: 0 !important;
@@ -246,7 +290,8 @@
   li.series.blurb .header.module h5.fandoms,
   li.work.blurb .header.module .byline,
   li.bookmark.blurb .header.module .byline,
-  li.series.blurb .header.module .byline {
+  li.series.blurb .header.module .byline
+  {
     clear: both !important;
     font-size: 0.9rem !important;
     margin-left: 0 !important;
@@ -256,28 +301,34 @@
 
   /* Fandom tags — flex row, wrap cleanly */
   h5.fandoms.heading,
-  .fandoms.heading {
+  .fandoms.heading
+  {
     align-items: baseline !important;
     display: flex !important;
     flex-wrap: wrap !important;
   }
 
   h5.fandoms.heading li,
-  .fandoms.heading li {
+  .fandoms.heading li
+  {
     display: inline !important;
     list-style: none !important;
     margin: 0.15em 0.25em 0.15em 0 !important;
   }
 
   .fandoms a.tag,
-  h5.fandoms.heading a {
+  h5.fandoms.heading a
+  {
     font-size: 0.75rem !important;
     max-width: 80vw !important;
     padding: 1px 7px !important;
   }
 
   /* Push fandom tags below the required-tags icon grid */
-  li.work.blurb .header.module h4.heading, li.bookmark.blurb .header.module h4.heading, li.series.blurb .header.module h4.heading {
+  li.work.blurb .header.module h4.heading,
+  li.bookmark.blurb .header.module h4.heading,
+  li.series.blurb .header.module h4.heading
+  {
     margin-bottom: 3em;
     margin-left: 66px !important;
   }
@@ -285,7 +336,8 @@
   /* ── Work page ───────────────────────────── */
 
   .userstuff,
-  #chapters .userstuff {
+  #chapters .userstuff
+  {
     line-height: 1.6 !important;
     margin-bottom: 1em !important;
     margin-left: 0 !important;
@@ -295,52 +347,62 @@
     width: 100% !important;
   }
 
-  dl.work.meta.group {
+  dl.work.meta.group
+  {
     border-radius: 6px !important;
     padding: 0.75em 0.6em 0.6em !important;
   }
 
-  dl.work.meta.group dt {
+  dl.work.meta.group dt
+  {
     padding-top: 0.2em !important;
   }
 
   /* Stats row — flex wrap so pairs sit inline and wrap cleanly */
-  dl.work.meta.group dd.stats dl.stats {
+  dl.work.meta.group dd.stats dl.stats
+  {
     display: flex !important;
     flex-wrap: wrap !important;
   }
 
   dl.work.meta.group dd.stats dl.stats dt,
-  dl.work.meta.group dd.stats dl.stats dd {
+  dl.work.meta.group dd.stats dl.stats dd
+  {
     padding-top: 0 !important;
   }
 
-  dl.work.meta.group dd.stats dl.stats dt {
+  dl.work.meta.group dd.stats dl.stats dt
+  {
     flex-basis: auto !important;
     letter-spacing: 0 !important;
   }
 
-  dl.work.meta.group dd.stats dl.stats dd {
+  dl.work.meta.group dd.stats dl.stats dd
+  {
     margin-right: 0.5em !important;
   }
 
   /* ── Comments ────────────────────────────── */
 
-  li.comment blockquote {
+  li.comment blockquote
+  {
     line-height: 1.55 !important;
   }
 
-  .thread .thread {
+  .thread .thread
+  {
     margin-left: 0.5em !important;
   }
 
-  li.comment .icon {
+  li.comment .icon
+  {
     height: 50px !important;
     min-width: 40px !important;
     width: 50px !important;
   }
 
-  li.comment .icon img {
+  li.comment .icon img
+  {
     height: 50px !important;
     max-width: 50px !important;
     width: 50px !important;
@@ -351,7 +413,8 @@
   .primary .icon img,
   .header .icon img,
   img[src$="/images/skins/iconsets/default/icon_user.png"],
-  img[src$="/images/skins/iconsets/default/icon_collection.png"] {
+  img[src$="/images/skins/iconsets/default/icon_collection.png"]
+  {
     height: 50px !important;
     max-width: 50px !important;
     width: 50px !important;
@@ -359,59 +422,69 @@
 
   /* ── Forms & fieldsets ───────────────────── */
 
-  fieldset {
+  fieldset
+  {
     border-radius: 6px !important;
   }
 
   /* ── Splash / front page ─────────────────── */
 
-  .splash {
+  .splash
+  {
     padding: 0 0.5em !important;
   }
 
   .splash .browse,
   .splash div.news,
   .splash .intro,
-  .splash .social {
+  .splash .social
+  {
     float: none !important;
     width: 100% !important;
   }
 
-  .logged-in .splash > .module {
+  .logged-in .splash>.module
+  {
     float: none !important;
     margin: 0 0 1em 0 !important;
     width: 100% !important;
   }
 
-  .logged-in .splash > div:nth-of-type(odd) {
+  .logged-in .splash>div:nth-of-type(odd)
+  {
     clear: none !important;
   }
 
   .splash .browse ul,
-  .splash .browse li {
+  .splash .browse li
+  {
     float: none !important;
     width: 100% !important;
   }
 
-  .splash .browse li:nth-of-type(odd) {
+  .splash .browse li:nth-of-type(odd)
+  {
     padding-right: 0 !important;
   }
 
-  .splash span.link {
+  .splash span.link
+  {
     float: none !important;
   }
 
   /* ── Footer ──────────────────────────────── */
 
   body #footer,
-  body #footer * {
+  body #footer *
+  {
     box-sizing: border-box !important;
     float: none !important;
     max-width: 100% !important;
     min-width: 0 !important;
   }
 
-  body #footer {
+  body #footer
+  {
     overflow: hidden !important;
     padding: 1.2em 1em !important;
     width: 100% !important;
@@ -419,24 +492,28 @@
 
   body #footer ul,
   body #footer ol,
-  body #footer li {
+  body #footer li
+  {
     clear: both !important;
     display: block !important;
     width: 100% !important;
   }
 
-  body #footer li {
+  body #footer li
+  {
     margin-bottom: 0.3em !important;
     padding: 0 !important;
   }
 
-  body #footer li.module.group {
+  body #footer li.module.group
+  {
     margin-bottom: 1.5em !important;
   }
 
   body #footer h4.heading,
   body #footer h3,
-  body #footer h2 {
+  body #footer h2
+  {
     display: block !important;
     overflow-wrap: break-word !important;
     white-space: normal !important;
@@ -445,7 +522,8 @@
   }
 
   body #footer a,
-  body #footer a:visited {
+  body #footer a:visited
+  {
     display: inline !important;
     overflow-wrap: break-word !important;
     white-space: normal !important;
@@ -455,16 +533,20 @@
 }
 
 
-/* ============================================
-   MIDSIZE — tablet / landscape phone (≤ 62em)
-   (same breakpoint as SHARED; split for clarity)
-   ============================================ */
+/*
+ * ============================================
+ * MIDSIZE — tablet / landscape phone (≤ 62em)
+ * (same breakpoint as SHARED; split for clarity)
+ * ============================================
+ */
 
-@media only screen and (max-width: 62em) {
+@media only screen and (max-width: 62em)
+{
 
   /* ── Body base ───────────────────────────── */
 
-  html {
+  html
+  {
     font-size: var(--tablet-base) !important;
   }
 
@@ -472,18 +554,21 @@
 
   #header h1,
   #header h1 span,
-  #header h1 sup {
+  #header h1 sup
+  {
     font-size: 0.9rem !important;
   }
 
-  #header .primary.navigation > ul > li,
-  #header .primary.navigation > ol > li {
+  #header .primary.navigation>ul>li,
+  #header .primary.navigation>ol>li
+  {
     height: auto !important;
     vertical-align: top !important;
   }
 
   #header .primary.navigation a,
-  #header .primary.navigation a:visited {
+  #header .primary.navigation a:visited
+  {
     font-size: 0.85rem !important;
     padding: 0.15em 0.35em !important;
     white-space: normal !important;
@@ -491,49 +576,94 @@
 
   /* ── Headings ────────────────────────────── */
 
-  #main h1, #content h1 { font-size: 1.8em !important; }
-  #main h2, #content h2 { font-size: 1.5em !important; }
-  #main h3, #content h3 { font-size: 1.25em !important; }
-  #main h4, #content h4 { font-size: 1.1em !important; }
-  #main h5, #content h5 { font-size: 1em !important; }
+  #main h1,
+  #content h1
+  {
+    font-size: 1.8em !important;
+  }
+
+  #main h2,
+  #content h2
+  {
+    font-size: 1.5em !important;
+  }
+
+  #main h3,
+  #content h3
+  {
+    font-size: 1.25em !important;
+  }
+
+  #main h4,
+  #content h4
+  {
+    font-size: 1.1em !important;
+  }
+
+  #main h5,
+  #content h5
+  {
+    font-size: 1em !important;
+  }
 
 }
 
 
-/* ============================================
-   SMALL — portrait phone (≤ 42em)
-   ============================================ */
+/*
+ * ============================================
+ * SMALL — portrait phone (≤ 42em)
+ * ============================================
+ */
 
-@media only screen and (max-width: 42em) {
+@media only screen and (max-width: 42em)
+{
 
   /* ── Body base ───────────────────────────── */
 
-  html {
+  html
+  {
     font-size: var(--mobile-base) !important;
   }
 
   /* ── Main content ────────────────────────── */
 
   #main,
-  #main.dashboard {
+  #main.dashboard
+  {
     padding-left: 2% !important;
     padding-right: 2% !important;
   }
 
   /* ── Headings ────────────────────────────── */
 
-  #main h1, #content h1 { font-size: 1.6em !important; }
-  #main h2, #content h2 { font-size: 1.3em !important; }
-  #main h3, #content h3 { font-size: 1.1em !important; }
+  #main h1,
+  #content h1
+  {
+    font-size: 1.6em !important;
+  }
+
+  #main h2,
+  #content h2
+  {
+    font-size: 1.3em !important;
+  }
+
+  #main h3,
+  #content h3
+  {
+    font-size: 1.1em !important;
+  }
 
   /* ── Dashboard ───────────────────────────── */
 
-  #dashboard {
+  #dashboard
+  {
     margin: 0.4em 1% !important;
     padding: 3px 4px !important;
   }
 
-  #dashboard a {
+  #dashboard a
+  {
     font-size: 0.7rem !important;
     padding: 4px 8px !important;
   }
@@ -542,13 +672,15 @@
 
   li.work.blurb .header.module h4.heading,
   li.bookmark.blurb .header.module h4.heading,
-  li.series.blurb .header.module h4.heading {
+  li.series.blurb .header.module h4.heading
+  {
     margin-left: 66px !important;
   }
 
   li.work.blurb p.datetime,
   li.bookmark.blurb p.datetime,
-  li.series.blurb p.datetime {
+  li.series.blurb p.datetime
+  {
     font-size: 0.7rem !important;
   }
 
@@ -566,27 +698,31 @@
   li.series.blurb ul.tags,
   li.series.blurb blockquote,
   li.series.blurb dl.stats,
-  li.series.blurb .actions {
+  li.series.blurb .actions
+  {
     padding-left: 8px !important;
     padding-right: 8px !important;
   }
 
   blockquote.userstuff.summary,
-  .blurb blockquote.userstuff.summary {
+  .blurb blockquote.userstuff.summary
+  {
     font-size: 0.85rem !important;
     padding: 0.4em 0.6em !important;
   }
 
   li.work.blurb dl.stats,
   li.bookmark.blurb dl.stats,
-  li.series.blurb dl.stats {
+  li.series.blurb dl.stats
+  {
     font-size: 0.75rem !important;
   }
 
   .tags a,
   .tags a:visited,
   ul.tags a,
-  dl.meta a.tag {
+  dl.meta a.tag
+  {
     font-size: 0.75rem !important;
     margin: 3px 1px !important;
     padding: 3px 8px !important;
@@ -594,17 +730,20 @@
 
   /* ── Work page ───────────────────────────── */
 
-  .userstuff {
+  .userstuff
+  {
     font-size: 1.03rem !important;
     max-width: 100% !important;
     padding: 1em 0.75em !important;
   }
 
-  dl.work.meta.group {
+  dl.work.meta.group
+  {
     padding: 0.5em 0.75em !important;
   }
 
-  .javascript .work.navigation .secondary a {
+  .javascript .work.navigation .secondary a
+  {
     display: block !important;
     padding-left: 0.75em !important;
     padding-right: 0.75em !important;
@@ -615,13 +754,15 @@
 
   /* ── Comments ────────────────────────────── */
 
-  li.comment .icon {
+  li.comment .icon
+  {
     height: 50px !important;
     min-width: 40px !important;
     width: 50px !important;
   }
 
-  li.comment .icon img {
+  li.comment .icon img
+  {
     height: 50px !important;
     max-width: 50px !important;
     width: 50px !important;
@@ -629,7 +770,8 @@
 
   /* ── Forms / filters ─────────────────────── */
 
-  form.filters {
+  form.filters
+  {
     max-width: 100% !important;
     min-width: 0 !important;
     width: 100% !important;
@@ -637,45 +779,59 @@
 
   /* ── Splash / front page ─────────────────── */
 
-  .logged-in .splash > .module {
+  .logged-in .splash>.module
+  {
     margin-left: 0 !important;
     margin-right: 0 !important;
     width: 100% !important;
   }
 
-  .logged-in .splash > div:nth-of-type(odd),
-  .logged-in .splash > div:nth-of-type(even) {
+  .logged-in .splash>div:nth-of-type(odd),
+  .logged-in .splash>div:nth-of-type(even)
+  {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
   /* ── Notices ─────────────────────────────── */
 
-  .notice, p.notice, div.notice,
-  .caution, p.caution,
-  .error, p.error, div.error, ul.errors {
+  .notice,
+  p.notice,
+  div.notice,
+  .caution,
+  p.caution,
+  .error,
+  p.error,
+  div.error,
+  ul.errors
+  {
     font-size: 0.85rem !important;
     padding: 0.5em 0.7em !important;
   }
 
   /* ── Footer ──────────────────────────────── */
 
-  body #footer {
+  body #footer
+  {
     font-size: 0.8rem !important;
   }
 
 }
 
 
-/* ============================================
-   VERY SMALL — tiny phones (≤ 30em)
-   ============================================ */
+/*
+ * ============================================
+ * VERY SMALL — tiny phones (≤ 30em)
+ * ============================================
+ */
 
-@media only screen and (max-width: 30em) {
+@media only screen and (max-width: 30em)
+{
 
   /* ── Body base ───────────────────────────── */
 
-  html {
+  html
+  {
     font-size: var(--tiny-base) !important;
   }
 
@@ -695,7 +851,8 @@
   li.series.blurb ul.tags,
   li.series.blurb blockquote,
   li.series.blurb dl.stats,
-  li.series.blurb .actions {
+  li.series.blurb .actions
+  {
     padding-left: 6px !important;
     padding-right: 6px !important;
   }
@@ -703,13 +860,15 @@
   /* Datetime overlaps title at this width — hide it */
   li.work.blurb p.datetime,
   li.bookmark.blurb p.datetime,
-  li.series.blurb p.datetime {
+  li.series.blurb p.datetime
+  {
     display: none !important;
   }
 
   /* ── Work page ───────────────────────────── */
 
-  .userstuff {
+  .userstuff
+  {
     font-size: 1.03rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -717,14 +876,16 @@
     padding: 0.8em 0.6em !important;
   }
 
-  dl.work.meta.group {
+  dl.work.meta.group
+  {
     padding: 0.4em 0.6em !important;
   }
 
   /* ── Comments ────────────────────────────── */
 
   li.comment .icon,
-  li.comment .icon img {
+  li.comment .icon img
+  {
     height: 40px !important;
     max-width: 40px !important;
     min-width: 30px !important;
