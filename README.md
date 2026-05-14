@@ -2,6 +2,10 @@
 
 Moonlit Wisteria is a soft, romantic AO3 site skin built around a  palette of dusty roses, wisterias, and cool lavenders — creamy parchment backgrounds give way to blush petal headers and deep indigo footers,  with every gradient flowing from warm to cool as the eye moves down the  page. Work blurbs and forms are styled with subtle shadows and rounded  corners, tags are color-coded by type and the custom icon set swaps  AO3's default icons for a coordinated mist-blue and rose scheme.
 
+**Version:** 1.0.2  
+**AO3 instructions:** https://archiveofourown.org/works/81075171
+**GitHub:** https://github.com/intothisshadow/AO3-SiteSkin_MoonlitWisteria
+
 # FONT
 
 This theme uses Lora (https://fonts.google.com/specimen/Lora) for body and Admiration Pains (https://www.dafont.com/admiration-pains.font) for Archive of Our Own text in the header. Both fonts need to be installed on your system to work. You can download them from above URLs or from the included Fonts folder.
@@ -50,9 +54,7 @@ This skin comes with a mobile add-on that makes the skin look better on phones a
 Replace the AO3 Icons 2.0 by ZerafinaCSS, (Zerafina)
 https://github.com/ZerafinaCSS/ | https://archiveofourown.org/works/57331222
 
-# Last Updated
 
-- March 19, 2026 - New site skin page: parent skin dropdown getting cut off fixed
 
 # SCREENSHOTS - Desktop
 
@@ -83,3 +85,12 @@ https://github.com/ZerafinaCSS/ | https://archiveofourown.org/works/57331222
 
 
 
+## Version
+
+| **Version** | **Date**   | **Description**                                              |
+| ----------- | ---------- | ------------------------------------------------------------ |
+| **1.0.2**   | 2026-05-14 | Dashboard current tab, mobile filter panel & legend fixes    |
+| **1.0.1**   | 2026-05-11 | Mobile & layout fix pass                                     |
+| **1.0.0**   | 2026-03-12 | Initial release + mobile add-on                              |
+
+The changelog documents significant changes only — new features, architectural decisions, and notable bug fixes. Individual CSS tweaks, rule refinements, and minor mobile adjustments are not logged.

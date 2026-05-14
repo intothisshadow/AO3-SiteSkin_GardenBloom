@@ -2,7 +2,7 @@
  * Theme Name: Moonlit Wisteria, Mobile Skin Add-on - AO3 Site Skin
  * Author: intothisshadow
  * Author URI: https://www.so-obsessed.com
- * Last Updated: 2026-Apr-14 19:34 GMT
+ * Last Updated: 2026-May-14 15:23 GMT
  * ============================================
  *
  * HOW TO USE:
@@ -54,15 +54,19 @@
   body
   {
     background-color: #F5EDE8 !important;
-    overflow-x: hidden !important;
+    /* overflow-x moved to #outer (Fix 7) */
   }
 
   #outer
   {
+    /* Fix 2: background texture + colour overrides AO3 narrow CSS #outer { background: #fff } */
     background: linear-gradient(160deg, #F5EDE8 0%, #eaecf5 50%, #EDE8F5 100%) !important;
+    background-color: #F5EDE8 !important;
     box-sizing: border-box !important;
     min-height: 100vh !important;
     min-width: 0 !important;
+    /* Fix 7: overflow-x moved here from body so inner content can scroll while outer clips */
+    overflow-x: hidden !important;
     width: 100% !important;
   }
 
@@ -85,8 +89,72 @@
   #main,
   #main.dashboard
   {
-    margin-left: 0 !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 0.5em 0.5em 2em !important;
     width: 100% !important;
+  }
+
+  /* ── Dashboard ───────────────────────────── */
+
+  /* Override AO3's 25-media-midsize.css dark red border */
+  #dashboard,
+  #dashboard.own
+  {
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    margin: 0 0 0.5em 0 !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 4px !important;
+    position: static !important;
+    width: 100% !important;
+  }
+
+  /*
+ * AO3 narrow gives .dashboard .landmark clear:both — removed from global
+ * rule to fix inbox pagination bug; re-add here scoped to #dashboard only
+ */
+  #dashboard .landmark
+  {
+    clear: both !important;
+  }
+
+  div#dashboard ul.navigation.actions li,
+  #dashboard ul.navigation.actions li
+  {
+    display: inline-block !important;
+  }
+
+  div#dashboard a,
+  div#dashboard a:link,
+  div#dashboard a:visited,
+  #dashboard a,
+  #dashboard a:link,
+  #dashboard a:visited
+  {
+    display: inline-block !important;
+    font-size: 0.8em !important;
+    padding: 2px 8px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Current/active dashboard link: keep inline-block to stay flush with neighbours */
+  div#dashboard .current,
+  #dashboard .current,
+  div#dashboard li.current a,
+  #dashboard li.current a,
+  div#dashboard .current a,
+  #dashboard .current a
+  {
+    display: inline-block !important;
+    padding: 2px 8px !important;
+    position: static !important;
+    vertical-align: middle !important;
   }
 
   /* ── Header ──────────────────────────────── */
@@ -173,25 +241,6 @@
   #greeting .user .icon
   {
     display: none !important;
-  }
-
-  /* ── Dashboard ───────────────────────────── */
-
-  /* Override AO3's 25-media-midsize.css dark red border */
-  #dashboard,
-  #dashboard.own
-  {
-    border-radius: 0 !important;
-    margin-bottom: 0.5em !important;
-  }
-
-  /*
- * AO3 narrow gives .dashboard .landmark clear:both — removed from global
- * rule to fix inbox pagination bug; re-add here scoped to #dashboard only
- */
-  #dashboard .landmark
-  {
-    clear: both !important;
   }
 
   /* ── Profile page ────────────────────────── */
@@ -680,11 +729,50 @@
 
   /* ── Forms / filters ─────────────────────── */
 
-  form.filters
+  /* Filter panel: cancel top margins on all first children so panel opens flush */
+  .javascript form.filters fieldset,
+  .javascript form.filters dl,
+  .javascript form.filters p,
+  .javascript .filters p.narrow-shown
   {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  /* Fully collapse the filter legend that AO3 only partially hides */
+  .javascript form.filters legend
+  {
+    display: none !important;
+  }
+
+  /* Filter slide-in panel: fixed overlay, slides in from right, no page shift */
+  .javascript form.filters
+  {
+    background: linear-gradient(160deg, #F5EDE8 0%, #eaecf5 50%, #EDE8F5 100%) !important;
+    background-color: #F5EDE8 !important;
+    bottom: 0 !important;
+    box-shadow: -4px 0 16px rgba(91, 78, 125, 0.2) !important;
+    height: 100% !important;
+    max-width: 100vw !important;
+    overflow-y: auto !important;
+    padding: 0 0.5em 0.5em !important;
+    position: fixed !important;
+    right: -100vw !important;
+    top: 0 !important;
+    transition: right 0.25s ease !important;
+    width: 100vw !important;
+    z-index: 400 !important;
+  }
+
+  /* Slide panel into view when open */
+  .filtering form.filters
+  {
+    right: 0 !important;
+  }
+
+  /* Cancel AO3's default page-shift behaviour */
+  .filtering
+  {
+    right: 0 !important;
   }
 
   /* ── Splash / front page ─────────────────── */
@@ -701,6 +789,78 @@
   {
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+
+  /* ── Docs/content page fixes ────────────── */
+
+  /* Fix 8: reduce blockquote indent so it doesn't overflow on narrow screens */
+  .userstuff blockquote
+  {
+    margin-inline-start: 0.25em !important;
+  }
+
+  /* Fix 9: tighten notice/caution/example boxes in docs/guideline/faq */
+  .guideline .userstuff .notice,
+  .guideline .userstuff .caution,
+  .guideline .example,
+  .faq .userstuff .notice,
+  .faq .userstuff .caution,
+  .faq .example,
+  .docs .userstuff .notice,
+  .docs .userstuff .caution,
+  .docs .example
+  {
+    margin-left: 0.25em !important;
+    margin-right: 0.25em !important;
+  }
+
+  /* Fix 10: make .userstuff tables horizontally scrollable */
+  .userstuff table
+  {
+    display: block !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+
+  /* Fix 11: tighten list indentation in docs/guideline/faq */
+  .docs .userstuff ul,
+  .docs .userstuff ol,
+  .guideline .userstuff ul,
+  .guideline .userstuff ol,
+  .faq .userstuff ul,
+  .faq .userstuff ol
+  {
+    margin: 0.3em 0 !important;
+    padding-left: 0.75em !important;
+  }
+
+  /* Fix 12: reduce list item padding in docs/guideline/faq */
+  .docs .userstuff li,
+  .guideline .userstuff li,
+  .faq .userstuff li
+  {
+    padding: 0 0.375em !important;
+  }
+
+  /* Fix 13: clamp guideline/docs h2.heading to one line with ellipsis */
+  #main.faq h2.heading,
+  #main.support h2.heading,
+  #main.docs h2.heading,
+  #main.guideline h2.heading,
+  #main.donate h2.heading
+  {
+    box-sizing: border-box !important;
+    font-size: 0.85em !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+  }
+
+  /* Fix 14: add top margin on fieldsets so they don't crowd the element above */
+  fieldset
+  {
+    margin-top: 0.75em !important;
   }
 
   /* ── Notices ─────────────────────────────── */

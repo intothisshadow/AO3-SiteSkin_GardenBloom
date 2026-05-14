@@ -2,7 +2,7 @@
  * Theme Name: Moonlit Wisteria - AO3 Site Skin
  * Author: intothisshadow
  * Author URI: https://www.so-obsessed.com
- * Last Updated: 2026-Apr-29 14:14 GMT
+ * Last Updated: 2026-May-14 15:24 GMT
  *
  * CODE & INSTRUCTION:
  *
@@ -171,6 +171,12 @@
  * 1. GLOBAL / RESET
  * ============================================
  */
+
+/* Fix 1: correct box model for #main so border/padding don't add to width */
+#main
+{
+  box-sizing: border-box !important;
+}
 
 /* fixed keeps the gradient from scrolling, so the same background persists at any scroll depth */
 html
@@ -815,6 +821,9 @@ div#dashboard,
   border: 1px solid var(--clr-lavender-soft) !important;
   border-radius: 14px !important;
   border-top: 3px solid var(--clr-violet) !important;
+  /* Fix 3+4: box-sizing + explicit px width keeps total under AO3's 14em margin-left */
+  box-sizing: border-box !important;
+  width: 210px !important;
 }
 
 /*
@@ -854,6 +863,8 @@ div#dashboard a:visited,
   letter-spacing: 0.04em !important;
   overflow-wrap: break-word !important;
   padding: 2px 6px !important;
+  text-align: left !important;
+  /* Fix 5: override AO3 default text-align:right on #dashboard ul */
   text-transform: uppercase !important;
   transition: background 0.2s ease, color 0.2s ease, padding-left 0.15s ease !important;
   white-space: normal !important;
@@ -878,8 +889,9 @@ div#dashboard ul.navigation.actions li
 }
 
 /*
- * Active/current dashboard link — same dark gradient as hover but always visible,
- * with a stronger box-shadow to lift it above the other items.
+ * Active/current dashboard link. display:block and position:static keep it
+ * flush with sibling links (which are also display:block). Without position:static
+ * the base button block's position:relative causes a height bump.
  */
 div#dashboard .current,
 #dashboard .current,
@@ -896,6 +908,7 @@ div#dashboard .current a,
   display: block !important;
   font-weight: bold !important;
   padding: 2px 10px !important;
+  position: static !important;
   text-decoration: none !important;
 }
 
@@ -1543,32 +1556,43 @@ fieldset:not(#header fieldset):not(#header *):not(#inbox-form fieldset.comments)
   border-top: 3px solid var(--clr-rose) !important;
   box-shadow: 0 2px 12px var(--clr-rose-008) !important;
   margin-bottom: 1em !important;
-  padding: 1.5em 1.2em 1em !important;
-  position: relative !important;
+  padding: 1em 1.2em !important;
 }
 
-fieldset:not(#header fieldset):not(#header *):not(#inbox-form fieldset.comments):not(#inbox-form ol.comment.index.group):not(#inbox-form fieldset.actions) legend
+fieldset:not(#header fieldset):not(#header *):not(#inbox-form fieldset.comments):not(#inbox-form ol.comment.index.group):not(#inbox-form fieldset.actions):not(form.verbose fieldset):not(.verbose fieldset):not(form.single fieldset):not(.authentication fieldset) legend
+{
+  background: transparent !important;
+  font-size: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+}
+
+/*
+ * Visible legends: verbose forms (post/edit work, preferences), single forms,
+ * authentication. These forms are excluded from the zero-height rule above.
+ */
+form.verbose legend,
+.verbose form legend,
+form.single legend,
+.authentication fieldset legend
 {
   background: linear-gradient(135deg, var(--clr-violet) 0%, var(--clr-rose) 100%) !important;
   border-radius: 20px !important;
   box-shadow: 0 2px 6px var(--clr-violet-025) !important;
   color: var(--clr-bg) !important;
+  display: block !important;
   font-size: 0.9em !important;
   font-weight: bold !important;
-  left: 1em !important;
+  height: auto !important;
   letter-spacing: 0.04em !important;
+  margin-bottom: 0.5em !important;
+  opacity: 1 !important;
   padding: 4px 14px !important;
-  position: absolute !important;
-  /* floats the pill to straddle the fieldset top border */
-  top: -0.4em !important;
-  /* negative value lets the pill sit half above the border line */
-}
-
-/* Nested fieldset legend — secondary accent */
-fieldset fieldset legend
-{
-  background: linear-gradient(135deg, var(--clr-rose) 0%, var(--clr-lavender-soft) 100%) !important;
-  box-shadow: none !important;
+  position: static !important;
+  width: auto !important;
 }
 
 /* Listbox (tag filter/autocomplete) */
@@ -4367,20 +4391,19 @@ pre::before
 }
 
 /*
- * AO3 default shrinks the authentication legend and partially hides it behind the
- * fieldset border. Reset to inherit size so it reads clearly as the form's heading,
- * styled as a gradient pill consistent with other fieldset legends.
+ * Authentication legend override — distinct gradient and padding from the
+ * general restore rule above. Scoped as fieldset legend for specificity match.
  */
-.authentication legend
+.authentication fieldset legend
 {
   background: linear-gradient(135deg, var(--clr-violet) 0%, var(--clr-mist-blue) 100%) !important;
   border-radius: 20px !important;
   color: var(--clr-bg) !important;
+  display: block !important;
   font-size: inherit !important;
   font-weight: normal !important;
   height: auto !important;
   opacity: 1 !important;
-  /* AO3 default sets opacity:0 to hide the legend text — this resets it */
   padding: 0.5em 0.5em 0 !important;
   width: auto !important;
 }
